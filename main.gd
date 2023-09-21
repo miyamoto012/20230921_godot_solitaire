@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var card: Card = $Card
 
-var dragged_card: Card = null
+var dragged_cards: Array[Card] = []
 
 func _process(delta)->void:
 	input_left_click()
@@ -14,16 +14,26 @@ func input_left_click():
 	
 	if Input.is_action_just_pressed("left_click"):
 		if card.check_collision(mouse_position):
-			dragged_card = card
-			dragged_card.set_clicked_local_position(mouse_position)
-	if Input.is_action_just_released("left_click") && dragged_card != null:
-			dragged_card = null
-		
+			dragged_cards.append(card) 
+			dragged_cards[0].set_clicked_local_position(mouse_position)
+	if Input.is_action_just_released("left_click") && dragged_cards.size() != 0:
+			tween_dragged_cards()
+			dragged_cards.clear()
+			
+
+
+func tween_dragged_cards()->void:
+	var tween = create_tween().set_parallel(true)
+	for card in dragged_cards:
+		tween.tween_property(card, "global_position", card.get_tween_destination(), 0.3)
+
 
 func drag_card()->void:
-	if dragged_card == null:
+	if dragged_cards.size() == 0:
 		return
-	
-	dragged_card.dragged_global_position(get_global_mouse_position())
+
+	for card in dragged_cards:
+		card.dragged_global_position(get_global_mouse_position())
 	
 		
+

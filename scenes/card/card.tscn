@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://gadgwxr07vtt"]
 
-[ext_resource type="Script" path="res://scenes/card.gd" id="1_cwtgj"]
+[ext_resource type="Script" path="res://scenes/card/card.gd" id="1_hslbx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3ruxs"]
 font_size = 13
 font_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="Node2D"]
-script = ExtResource("1_cwtgj")
+script = ExtResource("1_hslbx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
