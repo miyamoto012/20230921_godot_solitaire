@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var card: Card = $Card
+@onready var card_storage = $CardStorage
 
 var dragged_cards: Array[Card] = []
 
@@ -17,6 +18,8 @@ func input_left_click():
 			dragged_cards.append(card) 
 			dragged_cards[0].set_clicked_local_position(mouse_position)
 	if Input.is_action_just_released("left_click") && dragged_cards.size() != 0:
+			if card_storage.check_collision_next_card_area(mouse_position):
+				dragged_cards[0].set_tween_destination(card_storage.get_next_card_position())
 			tween_dragged_cards()
 			dragged_cards.clear()
 			
