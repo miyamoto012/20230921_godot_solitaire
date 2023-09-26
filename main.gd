@@ -5,6 +5,12 @@ extends Node2D
 
 var dragged_cards: Array[Card] = []
 
+
+func _ready()->void:
+	pass
+
+
+
 func _process(delta)->void:
 	input_left_click()
 	drag_card()

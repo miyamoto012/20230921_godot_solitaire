@@ -1,3 +1,4 @@
+class_name card_storage
 extends Node2D
 
 const CARD_WIDTH: int = 40

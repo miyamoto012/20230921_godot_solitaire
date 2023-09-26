@@ -1,29 +1,40 @@
 class_name Card
 extends Node2D
 
-
 const CARD_WIDTH: int = 40
 const CARD_HEIGHT: int = 50
 
 var _clicked_local_position: Vector2 = Vector2.ZERO
 var _tween_destination: Vector2
 
+@onready var _back = $Back
 
 func _ready():
 	_tween_destination = global_position
+	
+	
+func show_back()->void:
+	_back.show()
+	
 
+func hide_back()->void:
+	_back.hide()
+	
 
 func check_collision(mouse_global_position: Vector2)->bool:
-	if mouse_global_position.x < global_position.x - CARD_WIDTH/2.0:
+	if _back.is_visible():
+		return false
+	
+	if mouse_global_position.x < (global_position.x - CARD_WIDTH/2.0):
 		return false
 		
-	if  global_position.x + CARD_WIDTH/2.0 < mouse_global_position.x:
+	if  (global_position.x + CARD_WIDTH/2.0) < mouse_global_position.x:
 		return false
 		
-	if mouse_global_position.y < global_position.y - CARD_HEIGHT/2.0:
+	if mouse_global_position.y < (global_position.y - CARD_HEIGHT/2.0):
 		return false
 		
-	if  global_position.y + CARD_HEIGHT/2.0 < mouse_global_position.y:
+	if  (global_position.y + CARD_HEIGHT/2.0) < mouse_global_position.y:
 		return false
 	
 	return true
