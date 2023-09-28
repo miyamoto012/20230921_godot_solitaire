@@ -36,7 +36,7 @@ func check_collision(mouse_global_position: Vector2)->bool:
 		
 	if  (global_position.y + CARD_HEIGHT/2.0) < mouse_global_position.y:
 		return false
-	
+		
 	return true
 	
 	

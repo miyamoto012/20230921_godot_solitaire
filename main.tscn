@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvsm0k1727p3x"]
+[gd_scene load_steps=3 format=3 uid="uid://bvsm0k1727p3x"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1wtwv"]
-[ext_resource type="PackedScene" uid="uid://gadgwxr07vtt" path="res://scenes/card/card.tscn" id="1_87g32"]
 [ext_resource type="PackedScene" uid="uid://ccdh1k6y8ym5h" path="res://scenes/card_storage/card_storage.tscn" id="3_iepfh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1wtwv")
 
-[node name="Card" parent="." instance=ExtResource("1_87g32")]
-position = Vector2(321, 151)
-
 [node name="CardStorage" parent="." instance=ExtResource("3_iepfh")]
 position = Vector2(140, 103)
+
+[node name="CardStorage2" parent="." instance=ExtResource("3_iepfh")]
+position = Vector2(261, 52)

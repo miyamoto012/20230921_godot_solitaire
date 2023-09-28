@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/card_storage/card_storage.gd" id="1_l6e66"]
 
-[node name="CardStorage" type="Node2D"]
+[node name="CardStorage" type="Node2D" groups=["card_storage"]]
 script = ExtResource("1_l6e66")
 
 [node name="ColorRect" type="ColorRect" parent="."]
