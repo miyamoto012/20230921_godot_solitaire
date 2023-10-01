@@ -31,6 +31,24 @@ func check_collision_next_card_area(mouse_global_position: Vector2)->bool:
 		return false
 		
 	return true
+	
+	
+func is_placeable(card: Card)->bool:
+	if stacked_cards.size() == 0:
+		if card.get_value() == 12:
+			return true
+		else:
+			return false
+
+	var top_card: Card = stacked_cards.back()
+	
+	if card.get_card_color() == top_card.get_card_color():
+		return false
+		
+	if card.get_value() != (top_card.get_value() - 1):
+		return false
+		
+	return true
 
 
 func get_next_card_position()->Vector2:

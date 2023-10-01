@@ -1,13 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvsm0k1727p3x"]
+[gd_scene load_steps=5 format=3 uid="uid://bvsm0k1727p3x"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1wtwv"]
+[ext_resource type="PackedScene" uid="uid://bncyy6s3lyoer" path="res://scenes/deck/deck.tscn" id="3_6qrnx"]
 [ext_resource type="PackedScene" uid="uid://ccdh1k6y8ym5h" path="res://scenes/card_storage/card_storage.tscn" id="3_iepfh"]
+[ext_resource type="PackedScene" uid="uid://c3p5seu1a65nx" path="res://scenes/drew_cards/drew_cards.tscn" id="4_jwstr"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1wtwv")
 
 [node name="CardStorage" parent="." instance=ExtResource("3_iepfh")]
-position = Vector2(140, 103)
+position = Vector2(78, 52)
 
 [node name="CardStorage2" parent="." instance=ExtResource("3_iepfh")]
 position = Vector2(261, 52)
+
+[node name="CardStorage3" parent="." instance=ExtResource("3_iepfh")]
+position = Vector2(167, 156)
+
+[node name="CardStorage4" parent="." instance=ExtResource("3_iepfh")]
+position = Vector2(310, 202)
+
+[node name="Deck" parent="." instance=ExtResource("3_6qrnx")]
+unique_name_in_owner = true
+position = Vector2(109, 255)
+
+[node name="DrewCards" parent="." instance=ExtResource("4_jwstr")]
+unique_name_in_owner = true
+position = Vector2(227, 275)

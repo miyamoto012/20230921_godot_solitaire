@@ -4,13 +4,58 @@ extends Node2D
 const CARD_WIDTH: int = 40
 const CARD_HEIGHT: int = 50
 
+enum CardColor{
+	BLACK,
+	RED,
+}
+
 var _clicked_local_position: Vector2 = Vector2.ZERO
 var _tween_destination: Vector2
+var _suit: AutoLoad.CardSuit
+var _value: int
+var _card_color: CardColor
 
+@onready var _suit_label = $Front/SuitLabel
+@onready var _value_label = $Front/ValueLabel
 @onready var _back = $Back
 
 func _ready():
 	_tween_destination = global_position
+	
+	
+func set_value(value: int)->void:
+	_value = value
+	_value_label.set_text("%d"%value)
+	
+
+func get_value()->int:
+	return _value
+	
+
+func get_card_color()->CardColor:
+	return _card_color
+	
+	
+func set_suit(suit: AutoLoad.CardSuit):
+	_suit = suit
+	
+	match suit:
+		AutoLoad.CardSuit.CLUB:
+			_suit_label.set_text("♧")
+			_card_color = CardColor.BLACK
+		AutoLoad.CardSuit.SPADE:
+			_suit_label.set_text("♤")
+			_card_color = CardColor.BLACK
+		AutoLoad.CardSuit.DIAMOND:
+			_suit_label.set_text("♢")
+			_card_color = CardColor.RED
+		AutoLoad.CardSuit.HEART:
+			_suit_label.set_text("♡")
+			_card_color = CardColor.RED
+		
+
+func get_suit()->AutoLoad.CardSuit:
+	return _suit
 	
 	
 func show_back()->void:
@@ -38,7 +83,7 @@ func check_collision(mouse_global_position: Vector2)->bool:
 		return false
 		
 	return true
-	
+
 	
 func set_clicked_local_position(mouse_global_position: Vector2):
 	_clicked_local_position = global_position - mouse_global_position
